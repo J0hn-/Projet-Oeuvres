@@ -8,7 +8,7 @@ import persistance.*;
 
 public class ServiceAdherent {
 
-	public void insert(Adherent unAdherent) throws MonException {
+	public static void insert(Adherent unAdherent) throws MonException {
 		String mysql;
 
 		DialogueBd unDialogueBd = DialogueBd.getInstance();
@@ -23,7 +23,7 @@ public class ServiceAdherent {
 		}
 	}
 
-	public void modif(Adherent unAdherent) throws MonException {
+	public static void modif(Adherent unAdherent) throws MonException {
 		String mysql;
 
 		DialogueBd unDialogueBd = DialogueBd.getInstance();
@@ -39,7 +39,7 @@ public class ServiceAdherent {
 		}
 	}
 
-	public Adherent consulter(int id) throws MonException {
+	public static Adherent consulter(int id) throws MonException {
 		String mysql = "select * from adherent where id_adherent=" + id;
 		List<Adherent> mesAdh = consulterListe(mysql);
 		if (mesAdh.isEmpty())
@@ -49,12 +49,12 @@ public class ServiceAdherent {
 		}
 	}
 
-	public List<Adherent> consulterListe() throws MonException {
+	public static List<Adherent> consulterListe() throws MonException {
 		String mysql = "select * from adherent";
 		return consulterListe(mysql);
 	}
 
-	private List<Adherent> consulterListe(String mysql) throws MonException {
+	private static List<Adherent> consulterListe(String mysql) throws MonException {
 		List<Object> rs;
 		List<Adherent> mesAdherents = new ArrayList<Adherent>();
 		int index = 0;

@@ -7,7 +7,7 @@
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Liste des adhérents</h1>
+            <h1 class="page-header">Liste des oeuvres</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -16,7 +16,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Tableau des adhérents
+                    Tableau des oeuvres
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
@@ -25,29 +25,32 @@
                             <thead>
                             <tr>
                                 <th>Numéro</th>
-                                <th>Nom</th>
-                                <th>Prénom</th>
-                                <th>Ville</th>
-                                <th>Action</th>
+                                <th>Titre</th>
+                                <th>Prix</th>
+                                <th>Propriétaire</th>
+                                <th>Actions</th>
                             </tr>
                             </thead>
                             <tfoot>
                             <tr>
                                 <th>Numéro</th>
-                                <th>Nom</th>
-                                <th>Prénom</th>
-                                <th>Ville</th>
-                                <th>Action</th>
+                                <th>Titre</th>
+                                <th>Prix</th>
+                                <th>Propriétaire</th>
+                                <th>Actions</th>
                             </tr>
                             </tfoot>
                             <tbody>
-                            <c:forEach items="${mesAdherents}" var="item">
+                            <c:forEach items="${mesOeuvres}" var="item">
                                 <tr>
-                                    <td>${item.idAdherent}</td>
-                                    <td>${item.nomAdherent}</td>
-                                    <td>${item.prenomAdherent}</td>
-                                    <td>${item.villeAdherent}</td>
-                                    <td><a href="adherent?action=modif&adherent=${item.idAdherent}"><i class="fa fa-edit"></i></a></td>
+                                    <td>${item.idOeuvrevente}</td>
+                                    <td>${item.titreOeuvrevente}</td>
+                                    <td>${item.prixOeuvrevente}</td>
+                                    <td>${item.proprietaire.nomProprietaire} ${item.proprietaire.prenomProprietaire}</td>
+                                    <td>
+                                        <a href="oeuvre?action=reservation&oeuvre=${item.idOeuvrevente}"><i class="fa fa-cc-visa"></i></a>
+                                        <a href="oeuvre?action=modif&oeuvre=${item.idOeuvrevente}"><i class="fa fa-edit"></i></a>
+                                    </td>
                                 </tr>
                             </c:forEach>
                             </tbody>

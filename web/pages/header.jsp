@@ -30,6 +30,8 @@
     <!-- Custom Fonts -->
     <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.11/css/dataTables.bootstrap.min.css"/>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -81,7 +83,19 @@
                         <!-- /.nav-second-level -->
                     </li>
                     <li>
-                        <a href="tables.html"><i class="fa fa-university fa-fw"></i> Oeuvres</a>
+                        <a href="#"><i class="fa fa-university fa-fw"></i> Oeuvres<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="oeuvre?action=proprio"><i class="fa fa-suitcase fa-fw"></i> Ajout d'un proprietaire</a>
+                            </li>
+                            <li>
+                                <a href="oeuvre?action=ajout"><i class="fa fa-upload fa-fw"></i> Ajout d'une oeuvre</a>
+                            </li>
+                            <li>
+                                <a href="oeuvre?action=lister"><i class="fa fa-table fa-fw"></i> Liste des oeuvres</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
                     </li>
                     <li>
                         <a href="forms.html"><i class="fa fa-cc-visa fa-fw"></i> Réservation</a>

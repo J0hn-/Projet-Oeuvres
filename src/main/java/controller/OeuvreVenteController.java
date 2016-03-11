@@ -1,8 +1,10 @@
 package controller;
 
-import dao.ServiceAdherent;
+import dao.ServiceOeuvre;
+import dao.ServiceProprietaire;
 import meserreurs.MonException;
-import metier.Adherent;
+import metier.Oeuvrevente;
+import metier.Proprietaire;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,14 +17,14 @@ import java.io.IOException;
 /**
  * Servlet implementation class AdherentController
  */
-@WebServlet("/adherent")
-public class AdherentController extends HttpServlet {
+@WebServlet("/oeuvre")
+public class OeuvreVenteController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdherentController() {
+    public OeuvreVenteController() {
         super();
     }
 
@@ -54,32 +56,54 @@ public class AdherentController extends HttpServlet {
         {
             case "lister":
                 try {
-                    request.setAttribute("mesAdherents", ServiceAdherent.consulterListe());
+                    request.setAttribute("mesOeuvres", ServiceOeuvre.gets());
                 } catch (MonException e) {
                     e.printStackTrace();
                 }
 
-                destinationPage = "/pages/adherent/liste.jsp";
+                destinationPage = "/pages/oeuvre/liste.jsp";
                 break;
             case "ajout" :
-                destinationPage = "/pages/adherent/ajout.jsp";
+                try {
+                    request.setAttribute("proprios", ServiceProprietaire.gets());
+                } catch (MonException e) {
+                    e.printStackTrace();
+                }
+                destinationPage = "/pages/oeuvre/ajout.jsp";
                 break;
             case "modif" :
                 try {
-                    request.setAttribute("adherent", ServiceAdherent.consulter(Integer.parseInt(request.getParameter("adherent"))));
+                    request.setAttribute("proprios", ServiceProprietaire.gets());
+                    request.setAttribute("o", ServiceOeuvre.get(Integer.parseInt(request.getParameter("oeuvre"))));
                 } catch (MonException e) {
                     e.printStackTrace();
                 }
 
-                destinationPage = "/pages/adherent/modif.jsp";
+                destinationPage = "/pages/oeuvre/modif.jsp";
                 break;
             case "modifier" :
                 try {
-                    Adherent unAdherent = ServiceAdherent.consulter(Integer.parseInt(request.getParameter("txtid")));
-                    unAdherent.setNomAdherent(request.getParameter("txtnom"));
-                    unAdherent.setPrenomAdherent(request.getParameter("txtprenom"));
-                    unAdherent.setVilleAdherent(request.getParameter("txtville"));
-                    ServiceAdherent.modif(unAdherent);
+                    Oeuvrevente ov = ServiceOeuvre.get(Integer.parseInt(request.getParameter("id")));
+                    ov.setTitreOeuvrevente(request.getParameter("titre"));
+                    ov.setEtatOeuvrevente(request.getParameter("etat"));
+                    ov.setPrixOeuvrevente(Float.parseFloat(request.getParameter("prix")));
+                    ov.setProprietaire(ServiceProprietaire.get(Integer.parseInt(request.getParameter("proprio"))));
+                    ServiceOeuvre.modif(ov);
+
+                } catch (MonException e) {
+                    e.printStackTrace();
+                }
+                destinationPage = "/index.jsp";
+                break;
+            case "proprio" :
+                destinationPage = "/pages/oeuvre/proprio.jsp";
+                break;
+            case "insertion" :
+                try {
+                    Proprietaire p = new Proprietaire();
+                    p.setNomProprietaire(request.getParameter("nom"));
+                    p.setPrenomProprietaire(request.getParameter("prenom"));
+                    ServiceProprietaire.insert(p);
 
                 } catch (MonException e) {
                     e.printStackTrace();
@@ -88,11 +112,12 @@ public class AdherentController extends HttpServlet {
                 break;
             case "inserer" :
                 try {
-                    Adherent unAdherent = new Adherent();
-                    unAdherent.setNomAdherent(request.getParameter("txtnom"));
-                    unAdherent.setPrenomAdherent(request.getParameter("txtprenom"));
-                    unAdherent.setVilleAdherent(request.getParameter("txtville"));
-                    ServiceAdherent.insert(unAdherent);
+                    Oeuvrevente ov = new Oeuvrevente();
+                    ov.setTitreOeuvrevente(request.getParameter("titre"));
+                    ov.setEtatOeuvrevente(request.getParameter("etat"));
+                    ov.setPrixOeuvrevente(Float.parseFloat(request.getParameter("prix")));
+                    ov.setProprietaire(ServiceProprietaire.get(Integer.parseInt(request.getParameter("proprio"))));
+                    ServiceOeuvre.insert(ov);
 
                 } catch (MonException e) {
                     e.printStackTrace();

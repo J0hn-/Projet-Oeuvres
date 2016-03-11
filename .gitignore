@@ -1,5 +1,6 @@
 out/
 target/
+.idea/
 
 # Windows image file caches
 Thumbs.db

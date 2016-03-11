@@ -62,10 +62,12 @@ public class AdherentController extends HttpServlet {
 
                 destinationPage = "/pages/adherent/liste.jsp";
                 break;
-            case "ajout" :
+            case "ajouter" :
                 destinationPage = "/pages/adherent/ajout.jsp";
                 break;
-            case "modification" :
+            case "modifier" :
+                destinationPage = "/pages/adherent/modif.jsp";
+
                 break;
             case "inserer" :
                 try {

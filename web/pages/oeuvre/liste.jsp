@@ -48,8 +48,10 @@
                                     <td>${item.prixOeuvrevente}</td>
                                     <td>${item.proprietaire.nomProprietaire} ${item.proprietaire.prenomProprietaire}</td>
                                     <td>
-                                        <a href="oeuvre?action=reservation&oeuvre=${item.idOeuvrevente}"><i class="fa fa-cc-visa"></i></a>
                                         <a href="oeuvre?action=modif&oeuvre=${item.idOeuvrevente}"><i class="fa fa-edit"></i></a>
+                                        <c:if test="${item.etatOeuvrevente == 'L'}">
+                                            <a href="oeuvre?action=reservation&oeuvre=${item.idOeuvrevente}"><i class="fa fa-cc-visa"></i></a>
+                                        </c:if>
                                     </td>
                                 </tr>
                             </c:forEach>

@@ -49,9 +49,10 @@ public class ReservationController extends HttpServlet {
             throws ServletException, IOException {
         String actionName = request.getParameter("action");
         String destinationPage = "/pages/error.jsp";
-        int idOeuvre = Integer.parseInt(request.getParameter("oeuvre"));
+        int idOeuvre;
         switch(actionName) {
             case "resume":
+                idOeuvre = Integer.parseInt(request.getParameter("oeuvre"));
                 try {
                     request.setAttribute("adherents", ServiceAdherent.consulterListe());
                     request.setAttribute("oeuvre", ServiceOeuvre.get(idOeuvre));
@@ -62,6 +63,7 @@ public class ReservationController extends HttpServlet {
                 break;
             case "reserver":
                 int idAdherent = Integer.parseInt(request.getParameter("adherent"));
+                idOeuvre = Integer.parseInt(request.getParameter("oeuvre"));
                 try {
                     Reservation re = new Reservation();
                     re.setAdherent(ServiceAdherent.consulter(idAdherent));
@@ -77,6 +79,14 @@ public class ReservationController extends HttpServlet {
                     e.printStackTrace();
                 }
                 destinationPage = "/pages/reservation/reserve.jsp";
+                break;
+            case "lister":
+                try {
+                    request.setAttribute("reservations", ServiceReservation.gets());
+                } catch (MonException e) {
+                    e.printStackTrace();
+                }
+                destinationPage = "/pages/reservation/liste.jsp";
                 break;
         }
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(destinationPage);

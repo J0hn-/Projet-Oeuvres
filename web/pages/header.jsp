@@ -98,7 +98,7 @@
                         <!-- /.nav-second-level -->
                     </li>
                     <li>
-                        <a href="forms.html"><i class="fa fa-cc-visa fa-fw"></i> Réservation</a>
+                        <a href="reservation?action=lister"><i class="fa fa-cc-visa fa-fw"></i> Réservation</a>
                     </li>
                 </ul>
             </div>

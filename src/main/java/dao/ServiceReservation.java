@@ -50,8 +50,8 @@ public class ServiceReservation {
                 reservation.setDate(date);
 
                 reservation.setStatut(rs.get(index + 3).toString());
-                // On incr�mente tous les 5 champs
-                index = index + 5;
+                // On incr�mente tous les 4 champs
+                index = index + 4;
                 mesReservation.add(reservation);
             }
 

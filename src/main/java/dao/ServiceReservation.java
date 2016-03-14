@@ -38,19 +38,15 @@ public class ServiceReservation {
         try{
             rs = DialogueBd.lecture(mysql);
             while (index < rs.size()) {
-                // On cr�e un stage
                 Reservation reservation = new Reservation();
-                // il faut redecouper la liste pour retrouver les lignes
                 reservation.setOeuvrevente(ServiceOeuvre.get(Integer.parseInt(rs.get(index).toString())));
                 reservation.setAdherent(ServiceAdherent.consulter(Integer.parseInt(rs.get(index + 1).toString())));
 
-                //rs.get(index + 2).toString()
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 Date date = sdf.parse(rs.get(index + 2).toString());
                 reservation.setDate(date);
 
                 reservation.setStatut(rs.get(index + 3).toString());
-                // On incr�mente tous les 4 champs
                 index = index + 4;
                 mesReservation.add(reservation);
             }

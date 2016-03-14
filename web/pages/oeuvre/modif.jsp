@@ -41,10 +41,10 @@
                                     <p class="help-block">Prix de l'oeuvre</p>
                                 </div>
                                 <div class="form-group">
-                                    <label>Proprietaire</label>
-                                    <select name="proprio" class="form-control" value="${o.proprietaire.idProprietaire} >
+                                    <label for="proprio">Proprietaire</label>
+                                    <select id="proprio" name="proprio" class="form-control" value="${o.proprietaire.idProprietaire} >
                                         <c:forEach items="${proprios}" var="item">
-                                            <option value="${item.idProprietaire}">${item.prenomProprietaire} ${item.nomProprietaire}</option>
+                                            <option value="${item.idProprietaire}"> ${item.prenomProprietaire} ${item.nomProprietaire} </option>
                                         </c:forEach>
                                     </select>
                                     <p class="help-block">Proprietaire de l'oeuvre</p>

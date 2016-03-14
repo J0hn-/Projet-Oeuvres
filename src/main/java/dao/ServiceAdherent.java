@@ -65,7 +65,7 @@ public class ServiceAdherent {
 				// On cr�e un stage
 				Adherent unA = new Adherent();
 				// il faut redecouper la liste pour retrouver les lignes
-				unA.setIdAdherent(Integer.parseInt(rs.get(index + 0).toString()));
+				unA.setIdAdherent(Integer.parseInt(rs.get(index).toString()));
 				unA.setNomAdherent(rs.get(index + 1).toString());
 				unA.setPrenomAdherent(rs.get(index + 2).toString());
 				unA.setVilleAdherent(rs.get(index + 3).toString());

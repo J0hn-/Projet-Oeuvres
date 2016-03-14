@@ -1,5 +1,8 @@
 package metier;
 
+import dao.ServiceAdherent;
+import meserreurs.MonException;
+
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
